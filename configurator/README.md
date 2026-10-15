@@ -8,10 +8,6 @@ It is designed to sit behind a link on the Wrapsthetic website. It has its own b
 back to the main site, and carries a `noindex` tag so search engines send people to the main site
 rather than straight into the form. There is no build step and no dependencies.
 
-**Spelling note.** Public coverage of the company (Motability Foundation) spells the name
-*Wrapsthetic* (wrap + aesthetic), so that spelling is used here. It is a single `brandName` value
-in `configurator.js` if it needs to change.
-
 ## Files
 
 | File | Purpose |
@@ -36,7 +32,7 @@ Edit the `CONFIG` block at the top of `configurator.js`:
 | Key | What it does |
 | --- | --- |
 | `brandName` | Company name shown in the header, footer, page title, buttons and order files |
-| `websiteUrl` | Where the logo, "Back to Wrapsthetic" and footer links go. Placeholder, confirm before launch |
+| `websiteUrl` | Where the logo, "Back to Wrapsthetic" and footer links go. Set to https://wrapsthetic.com |
 | `contactEmail` | Address customers are asked to email the order pack to if the server is unreachable. Placeholder, confirm before launch |
 | `submitUrl` | Endpoint that receives orders (see below). Defaults to `/api/wrap-orders` |
 | `seamAllowanceCm` | Extra width added to every template for the overlap seam |

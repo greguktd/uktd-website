@@ -8,7 +8,7 @@
     // ---------------------------------------------------------------
     const CONFIG = {
         brandName: 'Wrapsthetic',                 // Company name used everywhere on the page and in order files
-        websiteUrl: 'https://wrapsthetic.com',    // Main website the configurator links back to. CONFIRM BEFORE LAUNCH.
+        websiteUrl: 'https://wrapsthetic.com',    // Main website the configurator links back to
         contactEmail: 'hello@wrapsthetic.com',    // Where fallback emails go. CONFIRM BEFORE LAUNCH.
         submitUrl: '/api/wrap-orders',            // Endpoint that receives multipart orders (see README)
         seamAllowanceCm: 1.0,                     // Extra width added to each template for the overlap seam
