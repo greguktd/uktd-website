@@ -41,7 +41,7 @@
                 <div>
                     <p class="eyebrow">The <span data-brand-name>Wrapsthetic</span> configurator</p>
                     <h1>Your Style. Your Story. Your Wrap.</h1>
-                    <p class="lead">Design your prosthetic wrap in five steps. Tell us about your prosthetic, take a few simple measurements and upload the artwork you love. It all goes straight to the <span data-brand-name>Wrapsthetic</span> team. No appointment, nothing to post.</p>
+                    <p class="lead">Design a prosthetic wrap or wheelchair wheel discs in five steps. Take a few simple measurements, upload the artwork you love and see it on your prosthetic or wheel before you order. It all goes straight to the <span data-brand-name>Wrapsthetic</span> team. No appointment, nothing to post.</p>
                     <div class="hero-actions">
                         <a href="#designer" class="button button-primary">Start the configurator</a>
                         <a href="#measure-guide" class="button button-secondary">Measuring guide</a>
@@ -49,7 +49,7 @@
                     <ul class="hero-points">
                         <li>Works on your phone or computer</li>
                         <li>Your progress is saved on this device as you go</li>
-                        <li>Preview your artwork on the wrap before you send it</li>
+                        <li>Turn a 3D preview of your artwork on your prosthetic, or spin it on your wheel</li>
                     </ul>
                 </div>
                 <div class="hero-visual" aria-hidden="true">
@@ -81,7 +81,7 @@
 
                 <ol class="stepper" id="stepper" aria-label="Progress">
                     <li data-step="1" class="is-current"><button type="button" class="stepper-button" data-goto="1"><span class="stepper-index">1</span><span>About you</span></button></li>
-                    <li data-step="2"><button type="button" class="stepper-button" data-goto="2"><span class="stepper-index">2</span><span>Your prosthetic</span></button></li>
+                    <li data-step="2"><button type="button" class="stepper-button" data-goto="2"><span class="stepper-index">2</span><span>What to wrap</span></button></li>
                     <li data-step="3"><button type="button" class="stepper-button" data-goto="3"><span class="stepper-index">3</span><span>Measurements</span></button></li>
                     <li data-step="4"><button type="button" class="stepper-button" data-goto="4"><span class="stepper-index">4</span><span>Artwork</span></button></li>
                     <li data-step="5"><button type="button" class="stepper-button" data-goto="5"><span class="stepper-index">5</span><span>Review &amp; send</span></button></li>
@@ -122,54 +122,99 @@
                         </div>
                         <div class="step-actions">
                             <span></span>
-                            <button type="button" class="button button-primary" data-next>Next: your prosthetic</button>
+                            <button type="button" class="button button-primary" data-next>Next: what to wrap</button>
                         </div>
                     </fieldset>
 
                     <!-- STEP 2 -->
                     <fieldset class="step" data-step="2">
-                        <legend><h3>Your prosthetic</h3></legend>
-                        <p class="step-help">This helps us choose the right measuring points and materials.</p>
+                        <legend><h3>What are you wrapping?</h3></legend>
+                        <p class="step-help">This decides which measurements we ask for and how the preview looks.</p>
 
                         <div class="field">
-                            <span class="label" id="limbTypeLabel">Type of prosthetic <span class="req">(required)</span></span>
-                            <div class="choice-grid" role="radiogroup" aria-labelledby="limbTypeLabel">
-                                <label class="choice"><input type="radio" name="limbType" value="transtibial" required><span><strong>Below knee</strong><small>Transtibial</small></span></label>
-                                <label class="choice"><input type="radio" name="limbType" value="transfemoral"><span><strong>Above knee</strong><small>Transfemoral</small></span></label>
-                                <label class="choice"><input type="radio" name="limbType" value="transradial"><span><strong>Below elbow</strong><small>Transradial</small></span></label>
-                                <label class="choice"><input type="radio" name="limbType" value="transhumeral"><span><strong>Above elbow</strong><small>Transhumeral</small></span></label>
-                                <label class="choice"><input type="radio" name="limbType" value="other"><span><strong>Something else</strong><small>Tell us below</small></span></label>
+                            <span class="label" id="productLabel">Product <span class="req">(required)</span></span>
+                            <div class="choice-grid choice-grid-2" role="radiogroup" aria-labelledby="productLabel">
+                                <label class="choice choice-product"><input type="radio" name="product" value="prosthetic" checked required><span><strong>Prosthetic wrap</strong><small>Socket and pylon</small></span></label>
+                                <label class="choice choice-product"><input type="radio" name="product" value="discs"><span><strong>Wheelchair wheel discs</strong><small>Spoke covers for one or both wheels</small></span></label>
                             </div>
                         </div>
 
-                        <div class="field-grid">
+                        <div id="prostheticFields">
                             <div class="field">
-                                <span class="label" id="sideLabel">Which side? <span class="req">(required)</span></span>
-                                <div class="choice-row" role="radiogroup" aria-labelledby="sideLabel">
-                                    <label class="choice"><input type="radio" name="side" value="left" required><span><strong>Left</strong></span></label>
-                                    <label class="choice"><input type="radio" name="side" value="right"><span><strong>Right</strong></span></label>
+                                <span class="label" id="limbTypeLabel">Type of prosthetic <span class="req">(required)</span></span>
+                                <div class="choice-grid" role="radiogroup" aria-labelledby="limbTypeLabel">
+                                    <label class="choice"><input type="radio" name="limbType" value="transtibial"><span><strong>Below knee</strong><small>Transtibial</small></span></label>
+                                    <label class="choice"><input type="radio" name="limbType" value="transfemoral"><span><strong>Above knee</strong><small>Transfemoral</small></span></label>
+                                    <label class="choice"><input type="radio" name="limbType" value="transradial"><span><strong>Below elbow</strong><small>Transradial</small></span></label>
+                                    <label class="choice"><input type="radio" name="limbType" value="transhumeral"><span><strong>Above elbow</strong><small>Transhumeral</small></span></label>
+                                    <label class="choice"><input type="radio" name="limbType" value="other"><span><strong>Something else</strong><small>Tell us below</small></span></label>
                                 </div>
                             </div>
-                            <div class="field">
-                                <span class="label" id="partsLabel">What would you like wrapped?</span>
-                                <div class="choice-row" aria-labelledby="partsLabel">
-                                    <label class="choice"><input type="checkbox" name="wrapSocket" checked><span><strong>Socket</strong></span></label>
-                                    <label class="choice"><input type="checkbox" name="wrapPylon"><span><strong>Pylon</strong></span></label>
+
+                            <div class="field-grid">
+                                <div class="field">
+                                    <span class="label" id="sideLabel">Which side? <span class="req">(required)</span></span>
+                                    <div class="choice-row" role="radiogroup" aria-labelledby="sideLabel">
+                                        <label class="choice"><input type="radio" name="side" value="left"><span><strong>Left</strong></span></label>
+                                        <label class="choice"><input type="radio" name="side" value="right"><span><strong>Right</strong></span></label>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <span class="label" id="partsLabel">What would you like wrapped?</span>
+                                    <div class="choice-row" aria-labelledby="partsLabel">
+                                        <label class="choice"><input type="checkbox" name="wrapSocket" checked><span><strong>Socket</strong></span></label>
+                                        <label class="choice"><input type="checkbox" name="wrapPylon"><span><strong>Pylon</strong></span></label>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <label for="socketMaterial">Socket surface</label>
+                                    <select id="socketMaterial" name="socketMaterial">
+                                        <option value="">Not sure</option>
+                                        <option value="carbon">Carbon fibre</option>
+                                        <option value="laminate">Laminate (glossy resin)</option>
+                                        <option value="thermoplastic">Thermoplastic (check socket)</option>
+                                        <option value="cover">Foam or cosmetic cover</option>
+                                    </select>
+                                </div>
+                                <div class="field">
+                                    <label for="prostheticNotes">Describe your prosthetic</label>
+                                    <input type="text" id="prostheticNotes" name="prostheticNotes" placeholder="For example: Össur pin-lock socket with carbon pylon">
                                 </div>
                             </div>
-                            <div class="field">
-                                <label for="socketMaterial">Socket surface</label>
-                                <select id="socketMaterial" name="socketMaterial">
-                                    <option value="">Not sure</option>
-                                    <option value="carbon">Carbon fibre</option>
-                                    <option value="laminate">Laminate (glossy resin)</option>
-                                    <option value="thermoplastic">Thermoplastic (check socket)</option>
-                                    <option value="cover">Foam or cosmetic cover</option>
-                                </select>
-                            </div>
-                            <div class="field">
-                                <label for="prostheticNotes">Describe your prosthetic</label>
-                                <input type="text" id="prostheticNotes" name="prostheticNotes" placeholder="For example: Össur pin-lock socket with carbon pylon">
+                        </div>
+
+                        <div id="discFields" hidden>
+                            <div class="field-grid">
+                                <div class="field">
+                                    <label for="wheelSize">Wheel size</label>
+                                    <select id="wheelSize" name="wheelSize">
+                                        <option value="">Not sure</option>
+                                        <option value="20in">20 inch</option>
+                                        <option value="22in">22 inch</option>
+                                        <option value="24in">24 inch (most common)</option>
+                                        <option value="25in">25 inch</option>
+                                        <option value="26in">26 inch</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="field">
+                                    <span class="label" id="discQtyLabel">How many discs?</span>
+                                    <div class="choice-row" role="radiogroup" aria-labelledby="discQtyLabel">
+                                        <label class="choice choice-compact"><input type="radio" name="discQuantity" value="2" checked><span><strong>A pair</strong><small>Both wheels</small></span></label>
+                                        <label class="choice choice-compact"><input type="radio" name="discQuantity" value="1"><span><strong>Just one</strong></span></label>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <span class="label" id="discMirrorLabel">For a pair</span>
+                                    <div class="choice-row" role="radiogroup" aria-labelledby="discMirrorLabel">
+                                        <label class="choice choice-compact"><input type="radio" name="discMirror" value="mirrored" checked><span><strong>Mirrored</strong><small>Reads the same from each side</small></span></label>
+                                        <label class="choice choice-compact"><input type="radio" name="discMirror" value="identical"><span><strong>Identical</strong><small>Same print on both</small></span></label>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <label for="wheelchairNotes">Describe your wheelchair</label>
+                                    <input type="text" id="wheelchairNotes" name="wheelchairNotes" placeholder="For example: Küschall K-Series with Spinergy wheels">
+                                </div>
                             </div>
                         </div>
 
@@ -192,7 +237,7 @@
                                     <label class="choice choice-compact"><input type="radio" name="units" value="in"><span><strong>Inches</strong></span></label>
                                 </div>
                             </div>
-                            <div class="field">
+                            <div class="field" id="intervalField">
                                 <label for="stationInterval">Measure every</label>
                                 <select id="stationInterval" name="stationInterval">
                                     <option value="2.5">2.5 cm (most accurate)</option>
@@ -240,14 +285,35 @@
                             </div>
                         </div>
 
-                        <div class="field">
+                        <div class="measure-block" id="discMeasureBlock" hidden>
+                            <h4>Wheel disc</h4>
+                            <p class="hint">Measure across the spoke area from the inside edge of the rim, through the centre, to the inside edge on the other side. Typical discs are 48 to 55 cm for 24 to 26 inch wheels. See the <a href="#measure-guide">measuring guide</a>.</p>
+                            <div class="field-grid">
+                                <div class="field">
+                                    <label for="discDiameter">Disc diameter <span class="req">(required)</span></label>
+                                    <div class="input-unit">
+                                        <input type="number" id="discDiameter" name="discDiameter" min="1" step="0.1" inputmode="decimal">
+                                        <span class="unit" data-unit>cm</span>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <label for="discHub">Hub clearance (across the axle or hub cap)</label>
+                                    <div class="input-unit">
+                                        <input type="number" id="discHub" name="discHub" min="0" step="0.1" inputmode="decimal" placeholder="e.g. 6">
+                                        <span class="unit" data-unit>cm</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="field" id="cutoutsField">
                             <label for="cutouts">Valves, buttons, straps or areas to leave clear</label>
                             <textarea id="cutouts" name="cutouts" rows="3" placeholder="For example: valve on the inside about 6 cm from the bottom; release button on the front near the bottom."></textarea>
                         </div>
 
                         <div class="field">
                             <label for="measureNotes">Notes about shape</label>
-                            <textarea id="measureNotes" name="measureNotes" rows="2" placeholder="For example: the brim is much higher at the back; there's a flare near the top."></textarea>
+                            <textarea id="measureNotes" name="measureNotes" rows="2" placeholder="For example: the brim is much higher at the back; there's a flare near the top; the wheel has a quick-release lever."></textarea>
                         </div>
 
                         <div class="step-actions">
@@ -259,7 +325,7 @@
                     <!-- STEP 4 -->
                     <fieldset class="step" data-step="4">
                         <legend><h3>Artwork</h3></legend>
-                        <p class="step-help">Upload a photo, pattern, logo or design. For the sharpest print, use the largest file you have (at least 2000 pixels on the long side is ideal). PNG, JPEG, WebP and SVG all work.</p>
+                        <p class="step-help">Upload a photo, pattern, logo or design and see it on your wrap straight away. For the sharpest print, use the largest file you have (at least 2000 pixels on the long side is ideal). PNG, JPEG, WebP and SVG all work.</p>
 
                         <div class="artwork-layout">
                             <div class="artwork-controls">
@@ -322,16 +388,21 @@
 
                             <div class="artwork-preview">
                                 <div class="preview-card">
-                                    <h4>Flat wrap template</h4>
-                                    <p class="hint">This is the shape of the wrap laid flat, built from your measurements. The dotted line is the seam.</p>
-                                    <div class="preview-stage" id="flatStage"></div>
+                                    <h4 id="modelTitle">On your prosthetic</h4>
+                                    <p class="hint" id="modelHint">Drag to turn it around. Lighting is approximate; colours print as supplied.</p>
+                                    <div class="preview-stage preview-stage-model" id="modelStage"></div>
+                                    <div class="spin-controls" id="spinControls">
+                                        <label for="turn">Turn <output id="turnOut" for="turn"></output></label>
+                                        <input type="range" id="turn" name="turn" min="0" max="360" value="180" step="1">
+                                        <label class="choice choice-inline choice-spin"><input type="checkbox" name="spin" id="spin"><span>Spin slowly</span></label>
+                                    </div>
                                 </div>
                                 <div class="preview-card">
-                                    <h4>On the limb (rough preview)</h4>
-                                    <p class="hint">Front view. The real wrap curves around, so edges will look a little different.</p>
-                                    <div class="preview-stage preview-stage-small" id="limbStage"></div>
+                                    <h4 id="flatTitle">Flat wrap template</h4>
+                                    <p class="hint" id="flatHint">The wrap laid flat, built from your measurements. Drag the artwork to move it. The dotted line is the seam.</p>
+                                    <div class="preview-stage preview-stage-flat" id="flatStage"></div>
                                 </div>
-                                <p class="hint" id="previewHint">Enter your socket measurements in step 3 to see the template shape.</p>
+                                <p class="hint" id="previewHint">Enter your measurements in step 3 to see the template shape.</p>
                             </div>
                         </div>
 
@@ -357,7 +428,7 @@
                             <div class="action-group">
                                 <button type="button" class="button button-secondary" id="downloadPack">Download order pack</button>
                                 <button type="button" class="button button-secondary" id="printOrder">Print</button>
-                                <button type="submit" class="button button-primary" id="submitOrder">Send to <span data-brand-name>Wrapsthetic</span></button>
+                                <button type="submit" class="button button-primary" id="submitOrder">Send to&nbsp;<span data-brand-name>Wrapsthetic</span></button>
                             </div>
                         </div>
                     </fieldset>
@@ -378,9 +449,9 @@
                 <h2>How it works</h2>
                 <ol class="steps-overview">
                     <li><span class="step-num">1</span><strong>Tell us about you</strong><span>Your name and how to reach you.</span></li>
-                    <li><span class="step-num">2</span><strong>Your prosthetic</strong><span>Below or above knee, arm, which side, what to wrap.</span></li>
+                    <li><span class="step-num">2</span><strong>What to wrap</strong><span>A prosthetic socket and pylon, or wheelchair wheel discs.</span></li>
                     <li><span class="step-num">3</span><strong>Measure</strong><span>A tape measure and five minutes. We guide every step.</span></li>
-                    <li><span class="step-num">4</span><strong>Artwork</strong><span>Upload a photo, pattern or design and position it on your wrap.</span></li>
+                    <li><span class="step-num">4</span><strong>Artwork</strong><span>Upload a design, drag it into place and see it on your prosthetic or wheel.</span></li>
                     <li><span class="step-num">5</span><strong>Send</strong><span>Check everything and send it straight to <span data-brand-name>Wrapsthetic</span>.</span></li>
                 </ol>
             </div>
@@ -399,6 +470,8 @@
                     <p>If you'd like the pylon (the tube below the socket) wrapped too, measure its length and the distance around it. Most pylons are the same all the way down.</p>
                     <h3>Valves, buttons and cut-outs</h3>
                     <p>Tell us where any valves, pin-lock release buttons or straps sit so we can leave them clear. "Valve on the inside, 6 cm from the bottom" is perfect.</p>
+                    <h3>Wheelchair wheel discs</h3>
+                    <p>Measure straight across the spoke area, from the inside edge of the rim through the centre to the inside edge on the other side. That is the disc diameter. Then measure across the hub or axle cap at the centre so we can leave a hole for it. A pair of discs is usually mirrored so the design reads the same way on both sides of the chair.</p>
                 </div>
                 <figure class="guide-figure">
                     <svg viewBox="0 0 260 360" role="img" aria-labelledby="guideTitle">
@@ -441,6 +514,7 @@
         </div>
     </footer>
 
+    <script src="vendor/three.min.js"></script>
     <script src="configurator.js"></script>
 </body>
 </html>
