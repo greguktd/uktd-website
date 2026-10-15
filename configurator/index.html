@@ -5,29 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wrapsthetic Configurator | Design your prosthetic wrap</title>
     <meta name="description" content="The Wrapsthetic configurator: measure your prosthetic, upload your artwork and send Wrapsthetic everything needed to make your custom wrap.">
-    <meta name="theme-color" content="#9d174d">
+    <meta name="theme-color" content="#52654a">
     <meta name="robots" content="noindex">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Oswald:wght@500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="configurator.css">
 </head>
 <body>
     <a class="skip-link" href="#main">Skip to content</a>
 
+    <div class="announce">
+        <div class="container announce-inner">
+            <span class="announce-text">Design your own wrap &middot; Wrap &middot; Style &middot; Personalise</span>
+            <a href="#" class="button button-outline" data-brand-link>Back to shop</a>
+        </div>
+    </div>
     <header class="site-header">
         <div class="container header-inner">
-            <a class="brand" href="#" data-brand-link>
-                <svg class="brand-mark" width="36" height="36" viewBox="0 0 36 36" aria-hidden="true" focusable="false">
-                    <path d="M12 3h12l-2 12c0 4-1 9-4 18-3-9-4-14-4-18L12 3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-                    <path d="M11 9h14M11.6 14h12.8M12.4 19h11.2M13.6 24h8.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                </svg>
-                <span class="brand-name"><span data-brand-name>Wrapsthetic</span> <span class="brand-sub">Configurator</span></span>
+            <a class="brand" href="#" data-brand-link aria-label="Wrapsthetic home">
+                <span class="wordmark" aria-hidden="true">Wrapsthet<svg class="wordmark-leg" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M5 0h14l-1.6 14.5c-.2 1.6-1.5 2.8-3.1 2.8h-4.6c-1.6 0-2.9-1.2-3.1-2.8L5 0z"/><rect x="9.5" y="17" width="5" height="15" rx="1.2"/><path d="M3 32h18a3 3 0 0 1 3 3v5H0v-5a3 3 0 0 1 3-3z"/></svg>c</span>
+                <span class="tagline">Wrap-Style-Personalise</span>
             </a>
             <nav aria-label="Primary">
+                <a href="#designer">Configurator</a>
                 <a href="#how-it-works">How it works</a>
                 <a href="#measure-guide">Measuring guide</a>
-                <a href="#" class="button button-small" data-brand-link>Back to&nbsp;<span data-brand-name>Wrapsthetic</span></a>
             </nav>
         </div>
     </header>
@@ -37,8 +40,8 @@
             <div class="container hero-grid">
                 <div>
                     <p class="eyebrow">The <span data-brand-name>Wrapsthetic</span> configurator</p>
-                    <h1>Design your wrap in five steps.</h1>
-                    <p class="lead">Tell us about your prosthetic, take a few simple measurements and upload the artwork you love. Everything goes straight to the <span data-brand-name>Wrapsthetic</span> team to make your wrap. No appointment, nothing to post.</p>
+                    <h1>Your Style. Your Story. Your Wrap.</h1>
+                    <p class="lead">Design your prosthetic wrap in five steps. Tell us about your prosthetic, take a few simple measurements and upload the artwork you love. It all goes straight to the <span data-brand-name>Wrapsthetic</span> team. No appointment, nothing to post.</p>
                     <div class="hero-actions">
                         <a href="#designer" class="button button-primary">Start the configurator</a>
                         <a href="#measure-guide" class="button button-secondary">Measuring guide</a>
@@ -53,15 +56,15 @@
                     <svg viewBox="0 0 220 300" class="hero-limb">
                         <defs>
                             <linearGradient id="heroGrad" x1="0" x2="1" y1="0" y2="1">
-                                <stop offset="0" stop-color="#f43f8e"/>
-                                <stop offset="0.5" stop-color="#fb923c"/>
-                                <stop offset="1" stop-color="#14b8a6"/>
+                                <stop offset="0" stop-color="#8dc63f"/>
+                                <stop offset="0.55" stop-color="#d9ef9a"/>
+                                <stop offset="1" stop-color="#52654a"/>
                             </linearGradient>
                         </defs>
-                        <path d="M70 20 Q110 0 150 20 L140 150 Q110 165 80 150 Z" fill="url(#heroGrad)" stroke="#3b0a2a" stroke-width="2"/>
+                        <path d="M70 20 Q110 0 150 20 L140 150 Q110 165 80 150 Z" fill="url(#heroGrad)" stroke="#1f261b" stroke-width="2"/>
                         <rect x="100" y="150" width="20" height="90" rx="6" fill="#2b2f36"/>
                         <path d="M60 240 h100 a14 14 0 0 1 14 14 v12 H46 v-12 a14 14 0 0 1 14 -14z" fill="#3a3f48"/>
-                        <g stroke="#3b0a2a" stroke-dasharray="4 4" fill="none" opacity="0.6">
+                        <g stroke="#1f261b" stroke-dasharray="4 4" fill="none" opacity="0.6">
                             <path d="M72 55 Q110 68 148 55"/>
                             <path d="M76 95 Q110 108 144 95"/>
                             <path d="M80 135 Q110 148 140 135"/>
@@ -400,23 +403,23 @@
                 <figure class="guide-figure">
                     <svg viewBox="0 0 260 360" role="img" aria-labelledby="guideTitle">
                         <title id="guideTitle">Diagram of a prosthetic socket showing the length measured down the front and circumference measurements taken at even intervals from the brim to the bottom.</title>
-                        <path d="M70 30 Q130 10 190 30 L176 230 Q130 248 84 230 Z" fill="#fbe3ee" stroke="#9d174d" stroke-width="2.5"/>
+                        <path d="M70 30 Q130 10 190 30 L176 230 Q130 248 84 230 Z" fill="#e4ecdc" stroke="#52654a" stroke-width="2.5"/>
                         <rect x="118" y="230" width="24" height="100" rx="6" fill="#4b5563"/>
-                        <g stroke="#c2410c" stroke-width="2.5" fill="none">
+                        <g stroke="#6fa32b" stroke-width="2.5" fill="none">
                             <path d="M72 70 Q130 86 188 70"/>
                             <path d="M76 120 Q130 136 184 120"/>
                             <path d="M80 170 Q130 186 180 170"/>
                             <path d="M85 222 Q130 238 175 222"/>
                         </g>
-                        <g font-family="Inter, sans-serif" font-size="13" fill="#c2410c" font-weight="600">
+                        <g font-family="Inter, sans-serif" font-size="13" fill="#6fa32b" font-weight="600">
                             <text x="196" y="74">A</text><text x="192" y="124">B</text><text x="188" y="174">C</text><text x="184" y="226">D</text>
                         </g>
-                        <g stroke="#9d174d" stroke-width="2">
+                        <g stroke="#52654a" stroke-width="2">
                             <line x1="40" y1="30" x2="40" y2="230"/>
                             <line x1="34" y1="30" x2="46" y2="30"/>
                             <line x1="34" y1="230" x2="46" y2="230"/>
                         </g>
-                        <text x="14" y="135" font-family="Inter, sans-serif" font-size="13" fill="#9d174d" font-weight="600" transform="rotate(-90 14 135)">Length</text>
+                        <text x="14" y="135" font-family="Inter, sans-serif" font-size="13" fill="#52654a" font-weight="600" transform="rotate(-90 14 135)">Length</text>
                         <g stroke="#6b7280" stroke-width="2">
                             <line x1="160" y1="240" x2="160" y2="320"/>
                             <line x1="154" y1="240" x2="166" y2="240"/>
@@ -433,7 +436,7 @@
 
     <footer class="site-footer">
         <div class="container footer-inner">
-            <p><strong data-brand-name>Wrapsthetic</strong> &middot; <a href="#" data-brand-link>Website</a> &middot; <a href="mailto:" data-brand-email>Email us</a></p>
+            <p><strong data-brand-name>Wrapsthetic</strong> &middot; <a href="#" data-brand-link>wrapsthetic.com</a> &middot; <a href="mailto:" data-brand-email>Email us</a></p>
             <p class="muted">Configurator by <a href="https://uktd.io">UKTD</a></p>
         </div>
     </footer>

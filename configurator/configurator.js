@@ -291,11 +291,11 @@
             // Seam line (left edge offset by the seam allowance) as a dotted guide.
             parts += '<line x1="' + r2(cx - w / 2 + geo.seam * SCALE) + '" y1="' + margin + '" x2="' + r2(cx - w / 2 + geo.seam * SCALE) + '" y2="' + r2(margin + h) + '" stroke="#111" stroke-dasharray="6 6" stroke-width="2" opacity="0.6"/>';
             if (forExport) {
-                parts += '<text x="' + bbox.x + '" y="' + (margin - 6 * SCALE) + '" font-family="Inter, Arial, sans-serif" font-size="' + (4 * SCALE) + '" font-weight="700" fill="#111">Socket wrap (' + geo.height + ' cm tall, max ' + round(geo.maxWidth, 1) + ' cm wide incl. ' + geo.seam + ' cm seam)</text>';
+                parts += '<text x="' + bbox.x + '" y="' + (margin - 6 * SCALE) + '" font-family="Roboto, Arial, sans-serif" font-size="' + (4 * SCALE) + '" font-weight="700" fill="#111">Socket wrap (' + geo.height + ' cm tall, max ' + round(geo.maxWidth, 1) + ' cm wide incl. ' + geo.seam + ' cm seam)</text>';
                 geo.stations.forEach((s, i) => {
                     const y = margin + s.position_cm * SCALE;
                     parts += '<line x1="' + x + '" y1="' + y + '" x2="' + r2(cx - (s.circumference_cm + geo.seam) / 2 * SCALE) + '" y2="' + y + '" stroke="#c2410c" stroke-width="1" stroke-dasharray="3 3"/>';
-                    parts += '<text x="' + x + '" y="' + (y - 4) + '" font-family="Inter, Arial, sans-serif" font-size="' + (2.6 * SCALE) + '" fill="#c2410c">' + String.fromCharCode(65 + i) + ' ' + s.position_cm + ' cm: ' + s.circumference_cm + ' cm around</text>';
+                    parts += '<text x="' + x + '" y="' + (y - 4) + '" font-family="Roboto, Arial, sans-serif" font-size="' + (2.6 * SCALE) + '" fill="#c2410c">' + String.fromCharCode(65 + i) + ' ' + s.position_cm + ' cm: ' + s.circumference_cm + ' cm around</text>';
                 });
             }
             x += labelCol + w + gap;
@@ -309,7 +309,7 @@
             parts += '<rect x="' + x + '" y="' + margin + '" width="' + r2(w) + '" height="' + r2(h) + '" fill="none" stroke="#111" stroke-width="' + (forExport ? 2 : 3) + '"/>';
             parts += '<line x1="' + r2(x + CONFIG.seamAllowanceCm * SCALE) + '" y1="' + margin + '" x2="' + r2(x + CONFIG.seamAllowanceCm * SCALE) + '" y2="' + r2(margin + h) + '" stroke="#111" stroke-dasharray="6 6" stroke-width="2" opacity="0.6"/>';
             if (forExport) {
-                parts += '<text x="' + x + '" y="' + (margin - 6 * SCALE) + '" font-family="Inter, Arial, sans-serif" font-size="' + (4 * SCALE) + '" font-weight="700" fill="#111">Pylon wrap (' + pylon.length_cm + ' cm x ' + round(pylon.circumference_cm + CONFIG.seamAllowanceCm, 1) + ' cm incl. seam)</text>';
+                parts += '<text x="' + x + '" y="' + (margin - 6 * SCALE) + '" font-family="Roboto, Arial, sans-serif" font-size="' + (4 * SCALE) + '" font-weight="700" fill="#111">Pylon wrap (' + pylon.length_cm + ' cm x ' + round(pylon.circumference_cm + CONFIG.seamAllowanceCm, 1) + ' cm incl. seam)</text>';
             }
             x += w + gap;
             totalH = Math.max(totalH, h);
@@ -320,7 +320,7 @@
             // 10 cm scale bar.
             const y = totalHeight - margin / 2;
             parts += '<line x1="' + margin + '" y1="' + y + '" x2="' + (margin + 10 * SCALE) + '" y2="' + y + '" stroke="#111" stroke-width="3"/>' +
-                '<text x="' + margin + '" y="' + (y - 8) + '" font-family="Inter, Arial, sans-serif" font-size="' + (3 * SCALE) + '" fill="#111">10 cm (1 SVG unit = 1 mm, print at 100%)</text>';
+                '<text x="' + margin + '" y="' + (y - 8) + '" font-family="Roboto, Arial, sans-serif" font-size="' + (3 * SCALE) + '" fill="#111">10 cm (1 SVG unit = 1 mm, print at 100%)</text>';
         }
         const sizeAttrs = forExport ? ' width="' + r2(totalW) + 'mm" height="' + r2(totalHeight) + 'mm"' : '';
         return '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 ' + r2(totalW) + ' ' + r2(totalHeight) + '"' + sizeAttrs + ' role="img" aria-label="Flat wrap template">' +
@@ -523,7 +523,7 @@
         const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
         const rows = (order.measurements.socket ? order.measurements.socket.stations : []).map((s, i) => '<tr><td>' + String.fromCharCode(65 + i) + '</td><td>' + s.position_cm + ' cm</td><td>' + s.circumference_cm + ' cm</td></tr>').join('');
         return '<!DOCTYPE html><html lang="en-GB"><head><meta charset="utf-8"><title>Wrap order - ' + esc(order.customer.name) + '</title>' +
-            '<style>body{font-family:Inter,Arial,sans-serif;max-width:800px;margin:2rem auto;padding:0 1rem;color:#111}table{border-collapse:collapse}td,th{border:1px solid #999;padding:4px 10px;text-align:left}h2{margin-top:1.5rem}</style></head><body>' +
+            '<style>body{font-family:Roboto,Arial,sans-serif;max-width:800px;margin:2rem auto;padding:0 1rem;color:#111}table{border-collapse:collapse}td,th{border:1px solid #999;padding:4px 10px;text-align:left}h2{margin-top:1.5rem}</style></head><body>' +
             '<h1>Wrap order</h1><p>' + esc(order.company) + ' · created ' + esc(order.createdAt) + '</p>' +
             '<h2>Customer</h2><p>' + esc(order.customer.name) + '<br>' + esc(order.customer.email) + '<br>' + esc(order.customer.phone) + '<br>' + esc(order.customer.address).replace(/\n/g, '<br>') + ' ' + esc(order.customer.postcode) + '</p><p>' + esc(order.customer.notes) + '</p>' +
             '<h2>Prosthetic</h2><p>' + esc(LIMB_LABELS[order.prosthetic.type] || order.prosthetic.type) + ', ' + esc(order.prosthetic.side) + ' side. Wrap: ' + (order.prosthetic.wrapSocket ? 'socket ' : '') + (order.prosthetic.wrapPylon ? 'pylon' : '') + '. Surface: ' + esc(order.prosthetic.socketMaterial || 'not given') + '. ' + esc(order.prosthetic.description) + '</p>' +
