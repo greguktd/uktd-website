@@ -1,18 +1,19 @@
-/* Prosthetic Wrap Studio - client-side application
-   Static, dependency-free. See wrap/README.md for configuration and the order data format. */
+/* Wrapsthetic Configurator - client-side application
+   Static, dependency-free. See configurator/README.md for configuration and the order data format. */
 (function () {
     'use strict';
 
     // ---------------------------------------------------------------
-    // Configuration (edit these for the studio)
+    // Configuration (edit these for Wrapsthetic)
     // ---------------------------------------------------------------
     const CONFIG = {
-        brandName: 'Prosthetic Wrap Studio',      // Studio / company name shown on the page
-        contactEmail: 'orders@example.com',       // Where fallback emails go. CHANGE BEFORE LAUNCH.
+        brandName: 'Wrapsthetic',                 // Company name used everywhere on the page and in order files
+        websiteUrl: 'https://wrapsthetic.com',    // Main website the configurator links back to. CONFIRM BEFORE LAUNCH.
+        contactEmail: 'hello@wrapsthetic.com',    // Where fallback emails go. CONFIRM BEFORE LAUNCH.
         submitUrl: '/api/wrap-orders',            // Endpoint that receives multipart orders (see README)
         seamAllowanceCm: 1.0,                     // Extra width added to each template for the overlap seam
         previewMaxPx: 1600,                       // Preview/export image is downscaled to this on the long side
-        storageKey: 'wrapStudio.v1'
+        storageKey: 'wrapsthetic.configurator.v1'
     };
 
     const CM_PER_IN = 2.54;
@@ -40,7 +41,8 @@
     // ---------------------------------------------------------------
     $$('[data-brand-name]').forEach(el => { el.textContent = CONFIG.brandName; });
     $$('[data-brand-email]').forEach(el => { el.href = 'mailto:' + CONFIG.contactEmail; });
-    document.title = CONFIG.brandName + ' | Design your wrap';
+    $$('[data-brand-link]').forEach(el => { el.href = CONFIG.websiteUrl; });
+    document.title = CONFIG.brandName + ' Configurator | Design your prosthetic wrap';
 
     // ---------------------------------------------------------------
     // Units
@@ -263,7 +265,7 @@
     }
 
     function buildFlatSvg(opts) {
-        // opts.forExport: true for the real-scale file sent to the studio (labels, scale bar, mm units).
+        // opts.forExport: true for the real-scale file sent to Wrapsthetic (labels, scale bar, mm units).
         const m = readMeasurements();
         const geo = socketGeometry(m.socket);
         const pylon = m.pylon && m.pylon.length_cm > 0 && m.pylon.circumference_cm > 0 ? m.pylon : null;
@@ -372,7 +374,7 @@
         limbStage.innerHTML = limb || '<p class="preview-empty">Socket measurements needed for this preview.</p>';
         if (!flat) hint.textContent = 'Enter your socket measurements in step 3 to see the template shape.';
         else if (!state.artwork) hint.textContent = 'Template ready. Upload an image to see it on the wrap.';
-        else hint.textContent = 'Use the sliders to position your artwork. The studio sees exactly this placement.';
+        else hint.textContent = 'Use the sliders to position your artwork. ' + CONFIG.brandName + ' sees exactly this placement.';
     }
 
     function loadArtwork(file) {
@@ -415,10 +417,10 @@
         const m = readMeasurements();
         const geo = socketGeometry(m.socket);
         return {
-            schema: 'uktd.prosthetic-wrap-order',
+            schema: 'wrapsthetic.wrap-order',
             version: 1,
             createdAt: new Date().toISOString(),
-            studio: CONFIG.brandName,
+            company: CONFIG.brandName,
             customer: {
                 name: f.customerName.value.trim(),
                 email: f.customerEmail.value.trim(),
@@ -440,7 +442,7 @@
                 seamAllowance_cm: CONFIG.seamAllowanceCm,
                 socket: geo ? { height_cm: geo.height, maxWidth_cm: round(geo.maxWidth, 2) } : null,
                 pylon: m.pylon ? { height_cm: m.pylon.length_cm, width_cm: round(m.pylon.circumference_cm + CONFIG.seamAllowanceCm, 2) } : null,
-                note: 'Widths are circumference plus seam allowance. Flat outline is a straight development; final fitting by the studio.'
+                note: 'Widths are circumference plus seam allowance. Flat outline is a straight development; final fitting by Wrapsthetic.'
             },
             artwork: state.artwork ? {
                 fileName: state.artwork.name, mimeType: state.artwork.type, bytes: state.artwork.size,
@@ -475,7 +477,7 @@
         const flat = buildFlatSvg({ id: 'r' });
         const limb = buildLimbSvg('r');
         html += '<div class="review-card"><h4>Artwork <button type="button" data-goto="4">Edit</button></h4>' +
-            dl([['File', o.artwork.fileName || 'No artwork uploaded yet. The studio will get in touch about your design.'], ['Finish', o.artwork.finish], ['Layout', o.artwork.placement.fit + ', ' + o.artwork.placement.scale + '% size, rotated ' + o.artwork.placement.rotation + '°'], ['Notes', o.artwork.notes]]) +
+            dl([['File', o.artwork.fileName || 'No artwork uploaded yet. ' + CONFIG.brandName + ' will get in touch about your design.'], ['Finish', o.artwork.finish], ['Layout', o.artwork.placement.fit + ', ' + o.artwork.placement.scale + '% size, rotated ' + o.artwork.placement.rotation + '°'], ['Notes', o.artwork.notes]]) +
             (flat ? '<div class="review-preview"><div>' + flat + '</div><div>' + (limb || '') + '</div></div>' : '') + '</div>';
         $('#reviewSummary').innerHTML = html;
     }
@@ -522,7 +524,7 @@
         const rows = (order.measurements.socket ? order.measurements.socket.stations : []).map((s, i) => '<tr><td>' + String.fromCharCode(65 + i) + '</td><td>' + s.position_cm + ' cm</td><td>' + s.circumference_cm + ' cm</td></tr>').join('');
         return '<!DOCTYPE html><html lang="en-GB"><head><meta charset="utf-8"><title>Wrap order - ' + esc(order.customer.name) + '</title>' +
             '<style>body{font-family:Inter,Arial,sans-serif;max-width:800px;margin:2rem auto;padding:0 1rem;color:#111}table{border-collapse:collapse}td,th{border:1px solid #999;padding:4px 10px;text-align:left}h2{margin-top:1.5rem}</style></head><body>' +
-            '<h1>Wrap order</h1><p>' + esc(order.studio) + ' · created ' + esc(order.createdAt) + '</p>' +
+            '<h1>Wrap order</h1><p>' + esc(order.company) + ' · created ' + esc(order.createdAt) + '</p>' +
             '<h2>Customer</h2><p>' + esc(order.customer.name) + '<br>' + esc(order.customer.email) + '<br>' + esc(order.customer.phone) + '<br>' + esc(order.customer.address).replace(/\n/g, '<br>') + ' ' + esc(order.customer.postcode) + '</p><p>' + esc(order.customer.notes) + '</p>' +
             '<h2>Prosthetic</h2><p>' + esc(LIMB_LABELS[order.prosthetic.type] || order.prosthetic.type) + ', ' + esc(order.prosthetic.side) + ' side. Wrap: ' + (order.prosthetic.wrapSocket ? 'socket ' : '') + (order.prosthetic.wrapPylon ? 'pylon' : '') + '. Surface: ' + esc(order.prosthetic.socketMaterial || 'not given') + '. ' + esc(order.prosthetic.description) + '</p>' +
             '<h2>Measurements (all in cm; customer entered in ' + esc(order.measurements.entered_in) + ')</h2>' +
@@ -577,16 +579,16 @@
             if (!res.ok) throw new Error('HTTP ' + res.status);
             let ref = '';
             try { const j = await res.json(); ref = j.reference || j.id || ''; } catch (e) { /* non-JSON response is fine */ }
-            showDone('We\'ve sent everything to the studio' + (ref ? ' (reference ' + ref + ')' : '') + '. You\'ll get a confirmation at ' + order.customer.email + ' and we\'ll be in touch to confirm your wrap.');
+            showDone('We\'ve sent everything to ' + CONFIG.brandName + (ref ? ' (reference ' + ref + ')' : '') + '. You\'ll get a confirmation at ' + order.customer.email + ' and we\'ll be in touch to confirm your wrap.');
             clearPersisted();
         } catch (err) {
             const order = buildOrder();
             const subject = encodeURIComponent('Wrap request from ' + order.customer.name);
-            const body = encodeURIComponent('Hi,\n\nPlease find my wrap order pack attached (downloaded from the wrap designer).\n\nName: ' + order.customer.name + '\nPhone: ' + order.customer.phone + '\n\nThanks!');
-            setStatus('We couldn\'t reach the studio\'s server just now. Please download your order pack below and email it to ' + CONFIG.contactEmail + '. Nothing you entered has been lost.', 'error');
-            status.innerHTML += ' <a href="mailto:' + CONFIG.contactEmail + '?subject=' + subject + '&body=' + body + '">Open an email to the studio</a>.';
+            const body = encodeURIComponent('Hi,\n\nPlease find my wrap order pack attached (downloaded from the ' + CONFIG.brandName + ' configurator).\n\nName: ' + order.customer.name + '\nPhone: ' + order.customer.phone + '\n\nThanks!');
+            setStatus('We couldn\'t reach ' + CONFIG.brandName + '\'s server just now. Please download your order pack below and email it to ' + CONFIG.contactEmail + '. Nothing you entered has been lost.', 'error');
+            status.innerHTML += ' <a href="mailto:' + CONFIG.contactEmail + '?subject=' + subject + '&body=' + body + '">Open an email to ' + CONFIG.brandName + '</a>.';
         } finally {
-            btn.disabled = false; btn.textContent = 'Send to the studio';
+            btn.disabled = false; btn.innerHTML = 'Send to ' + CONFIG.brandName;
         }
     }
 

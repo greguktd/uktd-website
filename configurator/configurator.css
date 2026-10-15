@@ -1,46 +1,46 @@
-/* Prosthetic Wrap Studio
+/* Wrapsthetic Configurator
    Accessible, light-first theme with dark-mode support.
    Designed for one-handed and mobile use: large targets, clear focus, no drag-only controls. */
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-    --bg: #f6f8f8;
+    --bg: #fbf7f9;
     --surface: #ffffff;
-    --surface-alt: #eef4f3;
-    --text: #15201f;
-    --text-muted: #4b5a58;
-    --accent: #1b5e5a;
-    --accent-strong: #124543;
-    --accent-soft: #d6ece9;
+    --surface-alt: #f5eef3;
+    --text: #211420;
+    --text-muted: #5c4b57;
+    --accent: #9d174d;
+    --accent-strong: #7a1039;
+    --accent-soft: #fbe3ee;
     --warm: #c2410c;
     --warm-soft: #fde8dc;
-    --border: #cfdad8;
-    --border-strong: #93a7a4;
+    --border: #e4d6de;
+    --border-strong: #a9919f;
     --focus: #ffb703;
     --danger: #b42318;
     --danger-soft: #fee4e2;
     --success: #067647;
     --success-soft: #dcfae6;
     --radius: 12px;
-    --shadow: 0 1px 2px rgba(21, 32, 31, 0.06), 0 8px 24px rgba(21, 32, 31, 0.08);
+    --shadow: 0 1px 2px rgba(33, 20, 32, 0.06), 0 8px 24px rgba(33, 20, 32, 0.08);
     color-scheme: light;
 }
 
 @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-        --bg: #0f1716;
-        --surface: #182221;
-        --surface-alt: #1f2c2a;
-        --text: #eef4f3;
-        --text-muted: #a7b8b5;
-        --accent: #5fd3c8;
-        --accent-strong: #8ae6dd;
-        --accent-soft: #1d3d3a;
+        --bg: #170f15;
+        --surface: #22181f;
+        --surface-alt: #2c1f28;
+        --text: #f6eef3;
+        --text-muted: #b9a6b2;
+        --accent: #f472b6;
+        --accent-strong: #f9a8d4;
+        --accent-soft: #3d1d31;
         --warm: #ff9b6a;
         --warm-soft: #3d2317;
-        --border: #2d3c3a;
-        --border-strong: #4d615e;
+        --border: #3c2d37;
+        --border-strong: #5e4d58;
         --danger: #ff8e85;
         --danger-soft: #3b1d1b;
         --success: #6fd49a;
@@ -88,6 +88,7 @@ small { display: block; font-weight: 400; color: var(--text-muted); font-size: 0
 .site-header { position: sticky; top: 0; z-index: 100; background: var(--surface); border-bottom: 1px solid var(--border); }
 .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 64px; }
 .brand { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; color: var(--accent); font-weight: 700; font-size: 1.15rem; }
+.brand-sub { font-weight: 500; color: var(--text-muted); }
 .site-header nav { display: flex; align-items: center; gap: 1.25rem; }
 .site-header nav a { font-weight: 500; text-decoration: none; }
 .site-header nav a:not(.button) { color: var(--text-muted); }
@@ -108,9 +109,9 @@ small { display: block; font-weight: 400; color: var(--text-muted); font-size: 0
 .button-small { min-height: 40px; padding: 0.4rem 1rem; background: var(--accent); color: #fff; }
 .button[disabled] { opacity: 0.6; cursor: wait; transform: none; }
 @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) .button-primary { color: #0f1716; }
-    :root:not([data-theme="light"]) .button-primary:hover { color: #0f1716; }
-    :root:not([data-theme="light"]) .button-small { color: #0f1716; }
+    :root:not([data-theme="light"]) .button-primary { color: #170f15; }
+    :root:not([data-theme="light"]) .button-primary:hover { color: #170f15; }
+    :root:not([data-theme="light"]) .button-small { color: #170f15; }
 }
 
 /* Hero */
@@ -122,7 +123,7 @@ small { display: block; font-weight: 400; color: var(--text-muted); font-size: 0
 .hero-points { list-style: none; display: grid; gap: 0.4rem; color: var(--text-muted); }
 .hero-points li::before { content: '✓'; color: var(--success); font-weight: 700; margin-right: 0.5rem; }
 .hero-visual { display: flex; justify-content: center; }
-.hero-limb { width: min(100%, 260px); filter: drop-shadow(0 12px 24px rgba(21,32,31,0.15)); }
+.hero-limb { width: min(100%, 260px); filter: drop-shadow(0 12px 24px rgba(33,20,32,0.18)); }
 @media (max-width: 760px) { .hero-grid { grid-template-columns: 1fr; } .hero-visual { order: -1; } .hero-limb { width: 160px; } }
 
 /* How it works */
@@ -130,7 +131,7 @@ small { display: block; font-weight: 400; color: var(--text-muted); font-size: 0
 .steps-overview li { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; display: grid; gap: 0.25rem; }
 .steps-overview li span:last-child { color: var(--text-muted); font-size: 0.95rem; }
 .step-num { width: 36px; height: 36px; border-radius: 50%; background: var(--accent); color: #fff; display: inline-flex; align-items: center; justify-content: center; font-weight: 700; margin-bottom: 0.5rem; }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .step-num { color: #0f1716; } }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .step-num { color: #170f15; } }
 
 /* Guide */
 .guide-grid { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 2.5rem; align-items: start; }

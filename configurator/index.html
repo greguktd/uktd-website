@@ -3,30 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prosthetic Wrap Studio | Design your wrap</title>
-    <meta name="description" content="Measure your prosthetic, upload your artwork and send everything the wrap studio needs to make a custom wrap for your socket and pylon.">
-    <meta name="theme-color" content="#1b5e5a">
+    <title>Wrapsthetic Configurator | Design your prosthetic wrap</title>
+    <meta name="description" content="The Wrapsthetic configurator: measure your prosthetic, upload your artwork and send Wrapsthetic everything needed to make your custom wrap.">
+    <meta name="theme-color" content="#9d174d">
+    <meta name="robots" content="noindex">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="wrap.css">
+    <link rel="stylesheet" href="configurator.css">
 </head>
 <body>
     <a class="skip-link" href="#main">Skip to content</a>
 
     <header class="site-header">
         <div class="container header-inner">
-            <a class="brand" href="./">
+            <a class="brand" href="#" data-brand-link>
                 <svg class="brand-mark" width="36" height="36" viewBox="0 0 36 36" aria-hidden="true" focusable="false">
                     <path d="M12 3h12l-2 12c0 4-1 9-4 18-3-9-4-14-4-18L12 3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
                     <path d="M11 9h14M11.6 14h12.8M12.4 19h11.2M13.6 24h8.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
                 </svg>
-                <span class="brand-name" data-brand-name>Prosthetic Wrap Studio</span>
+                <span class="brand-name"><span data-brand-name>Wrapsthetic</span> <span class="brand-sub">Configurator</span></span>
             </a>
             <nav aria-label="Primary">
                 <a href="#how-it-works">How it works</a>
                 <a href="#measure-guide">Measuring guide</a>
-                <a href="#designer" class="button button-small">Start your wrap</a>
+                <a href="#" class="button button-small" data-brand-link>Back to&nbsp;<span data-brand-name>Wrapsthetic</span></a>
             </nav>
         </div>
     </header>
@@ -35,12 +36,12 @@
         <section class="hero">
             <div class="container hero-grid">
                 <div>
-                    <p class="eyebrow">Custom wraps for prosthetic sockets and pylons</p>
-                    <h1>Your limb. Your artwork. Measured by you, made by us.</h1>
-                    <p class="lead">Tell us about your prosthetic, take a few simple measurements, upload the artwork you love and we'll do the rest. No appointment needed and nothing to post to us.</p>
+                    <p class="eyebrow">The <span data-brand-name>Wrapsthetic</span> configurator</p>
+                    <h1>Design your wrap in five steps.</h1>
+                    <p class="lead">Tell us about your prosthetic, take a few simple measurements and upload the artwork you love. Everything goes straight to the <span data-brand-name>Wrapsthetic</span> team to make your wrap. No appointment, nothing to post.</p>
                     <div class="hero-actions">
-                        <a href="#designer" class="button button-primary">Start your wrap</a>
-                        <a href="#measure-guide" class="button button-secondary">See the measuring guide</a>
+                        <a href="#designer" class="button button-primary">Start the configurator</a>
+                        <a href="#measure-guide" class="button button-secondary">Measuring guide</a>
                     </div>
                     <ul class="hero-points">
                         <li>Works on your phone or computer</li>
@@ -52,15 +53,15 @@
                     <svg viewBox="0 0 220 300" class="hero-limb">
                         <defs>
                             <linearGradient id="heroGrad" x1="0" x2="1" y1="0" y2="1">
-                                <stop offset="0" stop-color="#ff8a5c"/>
-                                <stop offset="0.5" stop-color="#ffcf5c"/>
-                                <stop offset="1" stop-color="#2ea6a0"/>
+                                <stop offset="0" stop-color="#f43f8e"/>
+                                <stop offset="0.5" stop-color="#fb923c"/>
+                                <stop offset="1" stop-color="#14b8a6"/>
                             </linearGradient>
                         </defs>
-                        <path d="M70 20 Q110 0 150 20 L140 150 Q110 165 80 150 Z" fill="url(#heroGrad)" stroke="#0e2f2d" stroke-width="2"/>
+                        <path d="M70 20 Q110 0 150 20 L140 150 Q110 165 80 150 Z" fill="url(#heroGrad)" stroke="#3b0a2a" stroke-width="2"/>
                         <rect x="100" y="150" width="20" height="90" rx="6" fill="#2b2f36"/>
                         <path d="M60 240 h100 a14 14 0 0 1 14 14 v12 H46 v-12 a14 14 0 0 1 14 -14z" fill="#3a3f48"/>
-                        <g stroke="#0e2f2d" stroke-dasharray="4 4" fill="none" opacity="0.6">
+                        <g stroke="#3b0a2a" stroke-dasharray="4 4" fill="none" opacity="0.6">
                             <path d="M72 55 Q110 68 148 55"/>
                             <path d="M76 95 Q110 108 144 95"/>
                             <path d="M80 135 Q110 148 140 135"/>
@@ -70,68 +71,9 @@
             </div>
         </section>
 
-        <section id="how-it-works" class="section">
-            <div class="container">
-                <h2>How it works</h2>
-                <ol class="steps-overview">
-                    <li><span class="step-num">1</span><strong>Tell us about you</strong><span>Your name and how to reach you.</span></li>
-                    <li><span class="step-num">2</span><strong>Your prosthetic</strong><span>Below or above knee, arm, which side, what to wrap.</span></li>
-                    <li><span class="step-num">3</span><strong>Measure</strong><span>A tape measure and five minutes. We guide every step.</span></li>
-                    <li><span class="step-num">4</span><strong>Artwork</strong><span>Upload a photo, pattern or design and position it on your wrap.</span></li>
-                    <li><span class="step-num">5</span><strong>Send</strong><span>Check everything and send it straight to the studio.</span></li>
-                </ol>
-            </div>
-        </section>
-
-        <section id="measure-guide" class="section section-alt">
-            <div class="container guide-grid">
-                <div>
-                    <h2>Measuring guide</h2>
-                    <p>You need a soft tape measure (a dressmaker's tape is perfect) and, ideally, someone to help hold things steady. Measure the prosthetic itself, not your residual limb. Take the socket off if that is easier for you.</p>
-                    <h3>Socket length</h3>
-                    <p>Measure down the front of the socket from the top edge (the brim) to the bottom where it meets the pylon or foot. If the brim is higher at the back, use the front.</p>
-                    <h3>Circumferences</h3>
-                    <p>Starting at the brim, wrap the tape all the way around the socket at each measuring point we give you. Keep the tape snug but not tight, and level with the floor. Write down the full distance around.</p>
-                    <h3>Pylon</h3>
-                    <p>If you'd like the pylon (the tube below the socket) wrapped too, measure its length and the distance around it. Most pylons are the same all the way down.</p>
-                    <h3>Valves, buttons and cut-outs</h3>
-                    <p>Tell us where any valves, pin-lock release buttons or straps sit so we can leave them clear. "Valve on the inside, 6 cm from the bottom" is perfect.</p>
-                </div>
-                <figure class="guide-figure">
-                    <svg viewBox="0 0 260 360" role="img" aria-labelledby="guideTitle">
-                        <title id="guideTitle">Diagram of a prosthetic socket showing the length measured down the front and circumference measurements taken at even intervals from the brim to the bottom.</title>
-                        <path d="M70 30 Q130 10 190 30 L176 230 Q130 248 84 230 Z" fill="#dff1ef" stroke="#1b5e5a" stroke-width="2.5"/>
-                        <rect x="118" y="230" width="24" height="100" rx="6" fill="#4b5563"/>
-                        <g stroke="#c2410c" stroke-width="2.5" fill="none">
-                            <path d="M72 70 Q130 86 188 70"/>
-                            <path d="M76 120 Q130 136 184 120"/>
-                            <path d="M80 170 Q130 186 180 170"/>
-                            <path d="M85 222 Q130 238 175 222"/>
-                        </g>
-                        <g font-family="Inter, sans-serif" font-size="13" fill="#c2410c" font-weight="600">
-                            <text x="196" y="74">A</text><text x="192" y="124">B</text><text x="188" y="174">C</text><text x="184" y="226">D</text>
-                        </g>
-                        <g stroke="#1b5e5a" stroke-width="2">
-                            <line x1="40" y1="30" x2="40" y2="230"/>
-                            <line x1="34" y1="30" x2="46" y2="30"/>
-                            <line x1="34" y1="230" x2="46" y2="230"/>
-                        </g>
-                        <text x="14" y="135" font-family="Inter, sans-serif" font-size="13" fill="#1b5e5a" font-weight="600" transform="rotate(-90 14 135)">Length</text>
-                        <g stroke="#6b7280" stroke-width="2">
-                            <line x1="160" y1="240" x2="160" y2="320"/>
-                            <line x1="154" y1="240" x2="166" y2="240"/>
-                            <line x1="154" y1="320" x2="166" y2="320"/>
-                        </g>
-                        <text x="170" y="285" font-family="Inter, sans-serif" font-size="12" fill="#4b5563">Pylon</text>
-                        <text x="60" y="350" font-family="Inter, sans-serif" font-size="12" fill="#4b5563">A–D: measure all the way around</text>
-                    </svg>
-                </figure>
-            </div>
-        </section>
-
         <section id="designer" class="section">
             <div class="container">
-                <h2>Design your wrap</h2>
+                <h2>Configure your wrap</h2>
                 <p class="section-intro">Work through the five steps below. You can go back at any time, and everything you type is saved on this device until you send it.</p>
 
                 <ol class="stepper" id="stepper" aria-label="Progress">
@@ -399,12 +341,12 @@
                     <!-- STEP 5 -->
                     <fieldset class="step" data-step="5">
                         <legend><h3>Review &amp; send</h3></legend>
-                        <p class="step-help">Check everything looks right. When you send it, the studio receives your details, measurements, the template and your original artwork file.</p>
+                        <p class="step-help">Check everything looks right. When you send it, the <span data-brand-name>Wrapsthetic</span> team receives your details, measurements, the template and your original artwork file.</p>
 
                         <div id="reviewSummary" class="review"></div>
 
                         <div class="field">
-                            <label class="choice choice-inline"><input type="checkbox" name="consent" id="consent" required><span>I'm happy for the studio to store these details and contact me about my wrap. <span class="req">(required)</span></span></label>
+                            <label class="choice choice-inline"><input type="checkbox" name="consent" id="consent" required><span>I'm happy for <span data-brand-name>Wrapsthetic</span> to store these details and contact me about my wrap. <span class="req">(required)</span></span></label>
                         </div>
 
                         <div class="step-actions step-actions-wrap">
@@ -412,7 +354,7 @@
                             <div class="action-group">
                                 <button type="button" class="button button-secondary" id="downloadPack">Download order pack</button>
                                 <button type="button" class="button button-secondary" id="printOrder">Print</button>
-                                <button type="submit" class="button button-primary" id="submitOrder">Send to the studio</button>
+                                <button type="submit" class="button button-primary" id="submitOrder">Send to <span data-brand-name>Wrapsthetic</span></button>
                             </div>
                         </div>
                     </fieldset>
@@ -428,15 +370,74 @@
                 </form>
             </div>
         </section>
+        <section id="how-it-works" class="section">
+            <div class="container">
+                <h2>How it works</h2>
+                <ol class="steps-overview">
+                    <li><span class="step-num">1</span><strong>Tell us about you</strong><span>Your name and how to reach you.</span></li>
+                    <li><span class="step-num">2</span><strong>Your prosthetic</strong><span>Below or above knee, arm, which side, what to wrap.</span></li>
+                    <li><span class="step-num">3</span><strong>Measure</strong><span>A tape measure and five minutes. We guide every step.</span></li>
+                    <li><span class="step-num">4</span><strong>Artwork</strong><span>Upload a photo, pattern or design and position it on your wrap.</span></li>
+                    <li><span class="step-num">5</span><strong>Send</strong><span>Check everything and send it straight to <span data-brand-name>Wrapsthetic</span>.</span></li>
+                </ol>
+            </div>
+        </section>
+
+        <section id="measure-guide" class="section section-alt">
+            <div class="container guide-grid">
+                <div>
+                    <h2>Measuring guide</h2>
+                    <p>You need a soft tape measure (a dressmaker's tape is perfect) and, ideally, someone to help hold things steady. Measure the prosthetic itself, not your residual limb. Take the socket off if that is easier for you.</p>
+                    <h3>Socket length</h3>
+                    <p>Measure down the front of the socket from the top edge (the brim) to the bottom where it meets the pylon or foot. If the brim is higher at the back, use the front.</p>
+                    <h3>Circumferences</h3>
+                    <p>Starting at the brim, wrap the tape all the way around the socket at each measuring point we give you. Keep the tape snug but not tight, and level with the floor. Write down the full distance around.</p>
+                    <h3>Pylon</h3>
+                    <p>If you'd like the pylon (the tube below the socket) wrapped too, measure its length and the distance around it. Most pylons are the same all the way down.</p>
+                    <h3>Valves, buttons and cut-outs</h3>
+                    <p>Tell us where any valves, pin-lock release buttons or straps sit so we can leave them clear. "Valve on the inside, 6 cm from the bottom" is perfect.</p>
+                </div>
+                <figure class="guide-figure">
+                    <svg viewBox="0 0 260 360" role="img" aria-labelledby="guideTitle">
+                        <title id="guideTitle">Diagram of a prosthetic socket showing the length measured down the front and circumference measurements taken at even intervals from the brim to the bottom.</title>
+                        <path d="M70 30 Q130 10 190 30 L176 230 Q130 248 84 230 Z" fill="#fbe3ee" stroke="#9d174d" stroke-width="2.5"/>
+                        <rect x="118" y="230" width="24" height="100" rx="6" fill="#4b5563"/>
+                        <g stroke="#c2410c" stroke-width="2.5" fill="none">
+                            <path d="M72 70 Q130 86 188 70"/>
+                            <path d="M76 120 Q130 136 184 120"/>
+                            <path d="M80 170 Q130 186 180 170"/>
+                            <path d="M85 222 Q130 238 175 222"/>
+                        </g>
+                        <g font-family="Inter, sans-serif" font-size="13" fill="#c2410c" font-weight="600">
+                            <text x="196" y="74">A</text><text x="192" y="124">B</text><text x="188" y="174">C</text><text x="184" y="226">D</text>
+                        </g>
+                        <g stroke="#9d174d" stroke-width="2">
+                            <line x1="40" y1="30" x2="40" y2="230"/>
+                            <line x1="34" y1="30" x2="46" y2="30"/>
+                            <line x1="34" y1="230" x2="46" y2="230"/>
+                        </g>
+                        <text x="14" y="135" font-family="Inter, sans-serif" font-size="13" fill="#9d174d" font-weight="600" transform="rotate(-90 14 135)">Length</text>
+                        <g stroke="#6b7280" stroke-width="2">
+                            <line x1="160" y1="240" x2="160" y2="320"/>
+                            <line x1="154" y1="240" x2="166" y2="240"/>
+                            <line x1="154" y1="320" x2="166" y2="320"/>
+                        </g>
+                        <text x="170" y="285" font-family="Inter, sans-serif" font-size="12" fill="#4b5563">Pylon</text>
+                        <text x="60" y="350" font-family="Inter, sans-serif" font-size="12" fill="#4b5563">A–D: measure all the way around</text>
+                    </svg>
+                </figure>
+            </div>
+        </section>
+
     </main>
 
     <footer class="site-footer">
         <div class="container footer-inner">
-            <p><span data-brand-name>Prosthetic Wrap Studio</span> &middot; <a href="mailto:" data-brand-email>Email us</a></p>
-            <p class="muted">Platform built by <a href="https://uktd.io">UKTD</a></p>
+            <p><strong data-brand-name>Wrapsthetic</strong> &middot; <a href="#" data-brand-link>Website</a> &middot; <a href="mailto:" data-brand-email>Email us</a></p>
+            <p class="muted">Configurator by <a href="https://uktd.io">UKTD</a></p>
         </div>
     </footer>
 
-    <script src="wrap.js"></script>
+    <script src="configurator.js"></script>
 </body>
 </html>

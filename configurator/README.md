@@ -1,32 +1,46 @@
-# Prosthetic Wrap Studio
+# Wrapsthetic Configurator
 
-A self-contained, static web app that lets an amputee measure their prosthetic, upload artwork
-and send the wrap studio everything it needs to produce a custom wrap for the socket and pylon.
+A self-contained, static web app for Wrapsthetic customers. An amputee measures their prosthetic,
+uploads artwork, previews it on the wrap and sends Wrapsthetic everything needed to produce a
+custom wrap for the socket and pylon.
 
-It lives at `/wrap/` on the UKTD site and deploys with the rest of the site through the existing
-Azure Static Web Apps workflow. There is no build step and no dependencies.
+It is designed to sit behind a link on the Wrapsthetic website. It has its own branding, links
+back to the main site, and carries a `noindex` tag so search engines send people to the main site
+rather than straight into the form. There is no build step and no dependencies.
+
+**Spelling note.** Public coverage of the company (Motability Foundation) spells the name
+*Wrapsthetic* (wrap + aesthetic), so that spelling is used here. It is a single `brandName` value
+in `configurator.js` if it needs to change.
 
 ## Files
 
 | File | Purpose |
 | --- | --- |
-| `index.html` | Landing content, measuring guide and the five-step designer form |
-| `wrap.css` | Styling (light and dark themes, large touch targets, print layout for the order sheet) |
-| `wrap.js` | Wizard logic, measurements, unit conversion, template geometry, previews, order pack, submission |
+| `index.html` | The configurator (five-step form), followed by "how it works" and the measuring guide |
+| `configurator.css` | Styling (light and dark themes, large touch targets, print layout for the order sheet) |
+| `configurator.js` | Wizard logic, measurements, unit conversion, template geometry, previews, order pack, submission |
+
+## Linking from the Wrapsthetic website
+
+Host this folder anywhere static files can be served and link to its `index.html`, for example
+`https://configurator.wrapsthetic.com/` or `https://wrapsthetic.com/configurator/`. Nothing in
+the folder depends on the UKTD site. On this repository it is reachable at `/configurator/`
+once deployed, which only happens on a push to `main` through the existing Azure Static Web Apps
+workflow. Opening a pull request against `main` also creates a preview deployment, so avoid that
+until the configurator is meant to be live.
 
 ## Before launch: configuration
 
-Edit the `CONFIG` block at the top of `wrap.js`:
+Edit the `CONFIG` block at the top of `configurator.js`:
 
 | Key | What it does |
 | --- | --- |
-| `brandName` | Studio name shown in the header, footer, page title and order files |
-| `contactEmail` | Address customers are asked to email the order pack to if the server is unreachable |
+| `brandName` | Company name shown in the header, footer, page title, buttons and order files |
+| `websiteUrl` | Where the logo, "Back to Wrapsthetic" and footer links go. Placeholder, confirm before launch |
+| `contactEmail` | Address customers are asked to email the order pack to if the server is unreachable. Placeholder, confirm before launch |
 | `submitUrl` | Endpoint that receives orders (see below). Defaults to `/api/wrap-orders` |
 | `seamAllowanceCm` | Extra width added to every template for the overlap seam |
 | `previewMaxPx` | Long-side size the preview image is downscaled to. The original file is sent untouched |
-
-`contactEmail` is a placeholder and must be changed.
 
 ## How the customer flow works
 
@@ -46,7 +60,7 @@ Edit the `CONFIG` block at the top of `wrap.js`:
 Progress is saved to `localStorage` on the device until the order is sent. Artwork files are
 not persisted, so a returning customer is asked to choose the file again.
 
-## What the studio receives
+## What Wrapsthetic receives
 
 ### Submission
 
@@ -66,7 +80,7 @@ and email it to `contactEmail`, and nothing they entered is lost.
 There is no backend in this repository yet. Options, in order of effort:
 
 - **Azure Static Web Apps managed function**: add an `api/` folder with a function on the
-  `wrap-orders` route that stores the parts in Blob Storage and emails the studio. Set
+  `wrap-orders` route that stores the parts in Blob Storage and emails Wrapsthetic. Set
   `api_location: "api"` in `.github/workflows/azure-static-web-apps-*.yml`.
 - **Form service**: point `submitUrl` at any service that accepts multipart uploads.
 - **No backend**: leave the endpoint unreachable. Customers always get the fallback and can email
@@ -76,10 +90,10 @@ There is no backend in this repository yet. Options, in order of effort:
 
 ```json
 {
-  "schema": "uktd.prosthetic-wrap-order",
+  "schema": "wrapsthetic.wrap-order",
   "version": 1,
   "createdAt": "2026-10-15T12:00:00.000Z",
-  "studio": "Prosthetic Wrap Studio",
+  "company": "Wrapsthetic",
   "customer": { "name": "", "email": "", "phone": "", "postcode": "", "address": "", "notes": "" },
   "prosthetic": { "type": "transtibial", "side": "left", "wrapSocket": true, "wrapPylon": true,
                   "socketMaterial": "carbon", "description": "" },
@@ -117,10 +131,10 @@ Illustrator, Inkscape or a cutter's software. For each part being wrapped it con
 
 The outline is a straight development (each circumference laid flat at its height), which is
 accurate for the near-cylindrical shapes of most sockets. Final fitting and any relief cuts remain
-with the studio.
+with Wrapsthetic.
 
 ## Testing
 
-Serve the repository root with any static server and open `/wrap/`. The flow was verified in
-headless Chromium: station generation, validation, unit switching, artwork preview, order pack
-download (valid zip), submission fallback and restore after reload.
+Serve the repository root with any static server and open `/configurator/`. The flow was
+verified in headless Chromium: station generation, validation, unit switching, artwork preview,
+order pack download (valid zip), submission fallback and restore after reload.
